@@ -26,6 +26,7 @@ from skimage.measure import label, regionprops
 from skimage.morphology import closing, square
 from skimage.color import label2rgb
 from skimage.feature import corner_harris, corner_subpix, corner_peaks
+from skimage.morphology import convex_hull_image
 
 from matplotlib import colors as c
 import matplotlib.gridspec as gridspec
@@ -195,7 +196,7 @@ def enhance_neurites(image, sigma):
 
 # Setup colormap for segmented images
 
-colors = list(map(plt.cm.nipy_spectral, range(0, 256, 1)))
+colors = list(map(plt.cm.jet, range(0, 256, 1)))
 random.shuffle(colors)
 colors[0] = (0.,0.,0.,1.)
 rmap = c.ListedColormap(colors)
